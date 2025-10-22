@@ -15,6 +15,12 @@
         android:alpha="0.9"
         />
 
+    <ImageView
+        android:id="@+id/splashImagenFondo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +42,7 @@
     <TextView
         android:id="@+id/splashAppName"
         android:textSize="50sp"
-        android:textColor="@color/azulCian"
+        android:textColor="@color/white"
         android:fontFamily="@font/bigbesty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
