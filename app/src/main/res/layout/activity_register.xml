@@ -5,27 +5,27 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".Register">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/loginGLh1"
+        android:id="@+id/registerGLh1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10"/>
+        app:layout_constraintGuide_percent="0.05"/>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/loginGLh2"
+        android:id="@+id/registerGLh2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.20"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/loginGLv1"
+        android:id="@+id/registerGLv1"
         app:layout_constraintGuide_percent="0.2"
         />
 
@@ -33,48 +33,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/loginGLv2"
+        android:id="@+id/registerGLv2"
         app:layout_constraintGuide_percent="0.8"
         />
 
     <ImageView
-        android:id="@+id/loginLogo"
+        android:id="@+id/registerLogo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/arrecife_de_coral"
-        app:layout_constraintTop_toTopOf="@id/loginGLh1"
-        app:layout_constraintEnd_toEndOf="@id/loginGLv2"
-        app:layout_constraintStart_toStartOf="@id/loginGLv1"
-        app:layout_constraintBottom_toBottomOf="@id/loginGLh2"
-         />
+        app:layout_constraintTop_toTopOf="@id/registerGLh1"
+        app:layout_constraintEnd_toEndOf="@id/registerGLv2"
+        app:layout_constraintStart_toStartOf="@id/registerGLv1"
+        app:layout_constraintBottom_toBottomOf="@id/registerGLh2"
+        />
 
     <TextView
-        android:id="@+id/loginAppName"
+        android:id="@+id/registerAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginLogo"
+        app:layout_constraintTop_toBottomOf="@id/registerLogo"
         android:textSize="40sp"
         android:fontFamily="@font/maglisto"
         />
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/loginTILuserName"
+        android:id="@+id/registerTILuserName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/loginAppName"
-        app:layout_constraintStart_toStartOf="@id/loginGLv1"
-        app:layout_constraintEnd_toEndOf="@id/loginGLv2"
+        app:layout_constraintTop_toBottomOf="@id/registerAppName"
+        app:layout_constraintStart_toStartOf="@id/registerGLv1"
+        app:layout_constraintEnd_toEndOf="@id/registerGLv2"
         android:layout_marginTop="10dp"
         app:startIconDrawable="@drawable/ic_person"
         >
 
         <EditText
-            android:id="@+id/loginETuserName"
+            android:id="@+id/registerETuserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre de usario"
@@ -85,12 +85,34 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/loginTILpassword"
+        android:id="@+id/registerTILemail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/loginTILuserName"
-        app:layout_constraintStart_toStartOf="@id/loginGLv1"
-        app:layout_constraintEnd_toEndOf="@id/loginGLv2"
+        app:layout_constraintTop_toBottomOf="@id/registerTILuserName"
+        app:layout_constraintStart_toStartOf="@id/registerGLv1"
+        app:layout_constraintEnd_toEndOf="@id/registerGLv2"
+        android:layout_marginTop="10dp"
+        app:startIconDrawable="@drawable/ic_email"
+        >
+
+        <EditText
+            android:id="@+id/registerETemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            >
+        </EditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/registerTILpassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/registerTILemail"
+        app:layout_constraintStart_toStartOf="@id/registerGLv1"
+        app:layout_constraintEnd_toEndOf="@id/registerGLv2"
         android:layout_marginTop="10dp"
         app:startIconDrawable="@drawable/ic_key"
         app:passwordToggleEnabled="true"
@@ -106,18 +128,41 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/registerTILpasswordDoubleCheck"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/registerTILpassword"
+        app:layout_constraintStart_toStartOf="@id/registerGLv1"
+        app:layout_constraintEnd_toEndOf="@id/registerGLv2"
+        android:layout_marginTop="10dp"
+        app:errorEnabled="true"
+        app:startIconDrawable="@drawable/ic_key"
+        app:passwordToggleEnabled="true"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Repetir contraseña"
+            android:inputType="textPassword"
+            >
+        </EditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Entrar"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginTILpassword"/>
+        app:layout_constraintTop_toBottomOf="@+id/registerTILpasswordDoubleCheck"/>
 
     <TextView
-        android:id="@+id/loginTVRegister"
+        android:id="@+id/registerTVRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -125,8 +170,6 @@
         android:text="¿Aún no te has registrado todavía?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginButton" />
-
-
-
+        app:layout_constraintTop_toBottomOf="@id/registerButton" />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>

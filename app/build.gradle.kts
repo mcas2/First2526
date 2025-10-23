@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation("jp.wasabeef:blurry:4.0.1")
     implementation("com.github.bumptech.glide:glide:5.0.5")
     implementation(libs.appcompat)
     implementation(libs.material)

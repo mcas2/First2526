@@ -45,8 +45,8 @@ public class Login extends AppCompatActivity {
                 String username = String.valueOf(loginTIL.getEditText().getText());
                 Toast toast = Toast.makeText(Login.this, username, Toast.LENGTH_SHORT);
                 toast.show();
-                //
-                Intent intentMain = new Intent(Login.this, MainActivity.class);
+                // Esto sí:
+                Intent intentMain = new Intent(Login.this, Register.class);
                 startActivity(intentMain);
             }
         });

@@ -45,7 +45,7 @@ public class SplashScreen extends AppCompatActivity {
 
         fondo = findViewById(R.id.splashImagenFondo);
         Glide.with(this)
-                    .load("https://plus.unsplash.com/premium_photo-1685077715983-772598c45360?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+                    .load("https://i.postimg.cc/ZYFhn7rQ/estrella.png")
                     .transition(DrawableTransitionOptions.withCrossFade(2000))
                     .centerCrop()
                     .into(fondo);
