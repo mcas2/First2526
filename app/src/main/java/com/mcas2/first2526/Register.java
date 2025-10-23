@@ -37,14 +37,14 @@ public class Register extends AppCompatActivity {
         TextInputLayout registerTILpassword = findViewById(R.id.registerTILpassword);
         TextInputLayout registerTILpasswordDoubleChek = findViewById(R.id.registerTILpasswordDoubleCheck);
 
-        registerTILuserName.getEditText().addTextChangedListener(new TextWatcher() {
+        registerTILemail.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                if (isUserNameEmpty(registerTILuserName)) {
-                    registerTILuserName.setErrorEnabled(true);
-                    registerTILuserName.setError("Introduce texto");
+                if (!isEmailCorrect(registerTILemail)) {
+                    registerTILemail.setErrorEnabled(true);
+                    registerTILemail.setError("Introduce un email correcto");
                 } else {
-                    registerTILuserName.setErrorEnabled(false);
+                    registerTILemail.setErrorEnabled(false);
                 }
             }
 
@@ -59,8 +59,28 @@ public class Register extends AppCompatActivity {
             }
         });
 
+        registerTILuserName.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (isUserNameEmpty(registerTILuserName)) {
+                    registerTILuserName.setErrorEnabled(true);
+                    registerTILuserName.setError("Introduce texto");
+                } else {
+                    registerTILuserName.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
         Button registerButton = findViewById(R.id.registerButton);
-        /**registerButton.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean canContinue = true;
@@ -81,14 +101,14 @@ public class Register extends AppCompatActivity {
                     registerTILemail.setErrorEnabled(false);
                 }/** else if (!arePasswordsTheSame())  {asd
                     Toast.makeText(Register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
                 if (canContinue) {
                     Intent intent = new Intent(Register.this, MainActivity.class);
                     startActivity(intent);
                 }
             }
-        }); */
+        });
 
     }
 
