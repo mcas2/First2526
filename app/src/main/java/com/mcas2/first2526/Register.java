@@ -1,6 +1,9 @@
 package com.mcas2.first2526;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -34,24 +37,58 @@ public class Register extends AppCompatActivity {
         TextInputLayout registerTILpassword = findViewById(R.id.registerTILpassword);
         TextInputLayout registerTILpasswordDoubleChek = findViewById(R.id.registerTILpasswordDoubleCheck);
 
+        registerTILuserName.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (isUserNameEmpty(registerTILuserName)) {
+                    registerTILuserName.setErrorEnabled(true);
+                    registerTILuserName.setError("Introduce texto");
+                } else {
+                    registerTILuserName.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+        });
+
         Button registerButton = findViewById(R.id.registerButton);
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        /**registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean canContinue = true;
                 if (isUserNameEmpty(registerTILuserName)){
                     //Toast.makeText(Register.this, "Nombre vacío", Toast.LENGTH_SHORT).show();
                     registerTILuserName.setErrorEnabled(true);
                     registerTILuserName.setError("Nombre vacío");
+                    canContinue = false;
+                } else {
+                    registerTILuserName.setErrorEnabled(false);
                 }
                 if (!isEmailCorrect(registerTILemail)) {
                     //Toast.makeText(Register.this, "Email incorrecto", Toast.LENGTH_SHORT).show();
                     registerTILemail.setErrorEnabled(true);
                     registerTILemail.setError("Tu email está mal escrito");
+                    canContinue = false;
+                } else {
+                    registerTILemail.setErrorEnabled(false);
                 }/** else if (!arePasswordsTheSame())  {asd
                     Toast.makeText(Register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-                }*/
+                }
+
+                if (canContinue) {
+                    Intent intent = new Intent(Register.this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
-        });
+        }); */
 
     }
 
