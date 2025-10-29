@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -38,8 +39,8 @@ public class Login extends AppCompatActivity {
         TextInputLayout loginPasswordTIL = findViewById(R.id.loginTILpassword);
         FormUtils formUtils = new FormUtils();
 
-        SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
-        String hashedPassword = sharedPref.getString("password", "NADA");
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String hashedPassword = sharedPref.getString("password", "");
         Log.d("hashedPassword", hashedPassword);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +62,7 @@ public class Login extends AppCompatActivity {
                     canContinue = false;
                 }
                 if (canContinue) {
-                    Intent intentMain = new Intent(Login.this, Register.class);
+                    Intent intentMain = new Intent(Login.this, MainActivity.class);
                     startActivity(intentMain);
                 }
             }

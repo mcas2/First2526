@@ -1,8 +1,10 @@
 package com.mcas2.first2526;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -38,7 +40,7 @@ public class Register extends AppCompatActivity {
         TextInputLayout registerTILpassword = findViewById(R.id.registerTILpassword);
         TextInputLayout registerTILpasswordDoubleChek = findViewById(R.id.registerTILpasswordDoubleCheck);
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         FormUtils formUtils = new FormUtils();
@@ -75,8 +77,11 @@ public class Register extends AppCompatActivity {
                 if (canContinue) {
                     editor.putString("userName",String.valueOf(registerTILuserName.getEditText().getText()));
                     editor.putString("email",String.valueOf(registerTILemail.getEditText().getText()));
-                    editor.putString("password", formUtils.generateHashedPassword(String.valueOf(registerTILpassword.getEditText().getText())));
+                    editor.putString("password", formUtils.generateHashedPassword(formUtils.getTILText(registerTILpassword)));
                     editor.apply();
+
+                    Intent intent = new Intent(Register.this, MainActivity.class);
+                    startActivity(intent);
                 }
 
             }
