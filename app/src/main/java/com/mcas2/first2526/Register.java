@@ -1,5 +1,7 @@
 package com.mcas2.first2526;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,25 +38,49 @@ public class Register extends AppCompatActivity {
         TextInputLayout registerTILpassword = findViewById(R.id.registerTILpassword);
         TextInputLayout registerTILpasswordDoubleChek = findViewById(R.id.registerTILpasswordDoubleCheck);
 
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        FormUtils formUtils = new FormUtils();
+
         Button registerButton = findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isUserNameEmpty(registerTILuserName)){
+                boolean canContinue = true;
+                if (formUtils.isTILEmpty(registerTILuserName)){
                     //Toast.makeText(Register.this, "Nombre vacío", Toast.LENGTH_SHORT).show();
                     registerTILuserName.setErrorEnabled(true);
                     registerTILuserName.setError("Nombre vacío");
+                    canContinue = false;
                 }
                 if (!isEmailCorrect(registerTILemail)) {
                     //Toast.makeText(Register.this, "Email incorrecto", Toast.LENGTH_SHORT).show();
                     registerTILemail.setErrorEnabled(true);
                     registerTILemail.setError("Tu email está mal escrito");
-                }/** else if (!arePasswordsTheSame())  {asd
-                    Toast.makeText(Register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-                }*/
+                    canContinue = false;
+                }
+
+                if (!arePasswordsTheSame(registerTILpassword, registerTILpasswordDoubleChek))  {
+                    registerTILpasswordDoubleChek.setErrorEnabled(true);
+                    registerTILpasswordDoubleChek.setError("La contraseña no es válida");
+                    if (formUtils.isTILEmpty(registerTILpassword) && formUtils.isTILEmpty(registerTILpasswordDoubleChek)) {
+                        Toast.makeText(Register.this, "No has escrito nada en el campo constraseña", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Register.this, "Las dos contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                    }
+                    canContinue = false;
+                }
+
+                if (canContinue) {
+                    editor.putString("userName",String.valueOf(registerTILuserName.getEditText().getText()));
+                    editor.putString("email",String.valueOf(registerTILemail.getEditText().getText()));
+                    editor.putString("password", formUtils.generateHashedPassword(String.valueOf(registerTILpassword.getEditText().getText())));
+                    editor.apply();
+                }
+
             }
         });
-
     }
 
     public boolean isEmailCorrect(TextInputLayout emailTIL) {
@@ -63,8 +91,10 @@ public class Register extends AppCompatActivity {
         return m.find();
     }
 
-    public boolean isUserNameEmpty(TextInputLayout userNameTIL) {
-        String username = String.valueOf(userNameTIL.getEditText().getText());
-        return username.isEmpty();
+    public boolean arePasswordsTheSame(TextInputLayout textInputLayout, TextInputLayout textInputLayoutCheck) {
+        String firstPassword = String.valueOf(textInputLayout.getEditText().getText());
+        String secondPassword = String.valueOf(textInputLayoutCheck.getEditText().getText());
+        return firstPassword.equals(secondPassword) && !firstPassword.isEmpty();
     }
+
 }

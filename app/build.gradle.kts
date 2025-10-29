@@ -32,12 +32,14 @@ android {
 }
 
 dependencies {
+    implementation("org.mindrot:jbcrypt:0.4")
     implementation("jp.wasabeef:blurry:4.0.1")
     implementation("com.github.bumptech.glide:glide:5.0.5")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.core.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
