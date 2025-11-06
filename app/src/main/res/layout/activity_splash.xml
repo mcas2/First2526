@@ -42,7 +42,7 @@
     <TextView
         android:id="@+id/splashAppName"
         android:textSize="50sp"
-        android:textColor="@color/white"
+        android:textColor="@color/material_dynamic_primary10"
         android:fontFamily="@font/maglisto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

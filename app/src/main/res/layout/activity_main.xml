@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/mainTV"
-        android:textColor="@color/azulCian"
+        android:textColor="@color/md_theme_onPrimary"
         android:textSize="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
