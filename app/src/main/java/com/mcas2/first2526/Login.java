@@ -39,6 +39,8 @@ public class Login extends AppCompatActivity {
         TextInputLayout loginPasswordTIL = findViewById(R.id.loginTILpassword);
         FormUtils formUtils = new FormUtils();
 
+        long initialTime = System.currentTimeMillis();
+
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String hashedPassword = sharedPref.getString("password", "");
         Log.d("hashedPassword", hashedPassword);
@@ -63,6 +65,8 @@ public class Login extends AppCompatActivity {
                 }
                 if (canContinue) {
                     Intent intentMain = new Intent(Login.this, MainActivity.class);
+                    long finalTime = System.currentTimeMillis();
+                    intentMain.putExtra("tiempoInvertido", (initialTime-finalTime)/1000);
                     startActivity(intentMain);
                 }
             }

@@ -31,7 +31,13 @@ public class MainActivity extends AppCompatActivity {
         Button mainButton = findViewById(R.id.mainButton);
         TextView mainTV = findViewById(R.id.mainTV);
 
-        contador = 0;
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String tiempo = String.valueOf(bundle.getLong("tiempoInvertido", 0));
+            mainTV.setText(tiempo+" has tardado en llenar el login.");
+        }
+
+        /**contador = 0;
         mainTV.setText(String.valueOf(contador));
 
         mainButton.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 contador++;
                 mainTV.setText(String.valueOf(contador));
             }
-        });
+        });*/
     }
 }

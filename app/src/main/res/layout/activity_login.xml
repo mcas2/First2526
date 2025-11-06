@@ -41,7 +41,7 @@
         android:id="@+id/loginLogo"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/arrecife_de_coral"
+        android:src="@drawable/logo_star_bold"
         app:layout_constraintTop_toTopOf="@id/loginGLh1"
         app:layout_constraintEnd_toEndOf="@id/loginGLv2"
         app:layout_constraintStart_toStartOf="@id/loginGLv1"

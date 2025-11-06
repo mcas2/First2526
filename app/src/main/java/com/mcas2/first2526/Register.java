@@ -78,7 +78,7 @@ public class Register extends AppCompatActivity {
                     editor.putString("userName",String.valueOf(registerTILuserName.getEditText().getText()));
                     editor.putString("email",String.valueOf(registerTILemail.getEditText().getText()));
                     editor.putString("password", formUtils.generateHashedPassword(formUtils.getTILText(registerTILpassword)));
-                    editor.apply();
+                    editor.commit();
 
                     Intent intent = new Intent(Register.this, MainActivity.class);
                     startActivity(intent);
