@@ -1,6 +1,5 @@
 package com.mcas2.first2526;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,8 +15,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
-
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -80,7 +77,7 @@ public class Register extends AppCompatActivity {
                     editor.putString("password", formUtils.generateHashedPassword(formUtils.getTILText(registerTILpassword)));
                     editor.commit();
 
-                    Intent intent = new Intent(Register.this, MainActivity.class);
+                    Intent intent = new Intent(Register.this, Principal.class);
                     startActivity(intent);
                 }
 

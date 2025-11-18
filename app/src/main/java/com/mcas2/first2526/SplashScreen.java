@@ -58,6 +58,7 @@ public class SplashScreen extends AppCompatActivity {
                     .into(fondo);
 
         launchNextActivity();
+        finish();
     }
 
     public void launchNextActivity() {

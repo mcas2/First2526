@@ -1,6 +1,5 @@
 package com.mcas2.first2526;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,9 +7,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,7 +61,7 @@ public class Login extends AppCompatActivity {
                     canContinue = false;
                 }
                 if (canContinue) {
-                    Intent intentMain = new Intent(Login.this, MainActivity.class);
+                    Intent intentMain = new Intent(Login.this, Principal.class);
                     long finalTime = System.currentTimeMillis();
                     intentMain.putExtra("tiempoInvertido", (initialTime-finalTime)/1000);
                     startActivity(intentMain);
